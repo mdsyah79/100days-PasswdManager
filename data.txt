@@ -1,0 +1,8 @@
+test,com | njjljlkqw@huhou | 123344test | test@email | 123445
+test | email@example.com.sg | 12345
+test1 | example@email.com | 1234567
+tango.com | email@example.com.sg | 12345678910
+ | email@example.com.sg | 
+ | email@example.com.sg | 
+testting.com | email@example.com.sg | 123445
+webby.crom | email@example.com.sg | 1233321
