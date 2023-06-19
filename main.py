@@ -93,22 +93,27 @@ def find_password():
     #get input from user
     url = website_input.get()
 
-    #load database from json file
-    with open("data.json", "r") as data_file:
-        database = json.load(data_file)
+    try:
+        #load database from json file
+        with open("data.json", "r") as data_file:
+            database = json.load(data_file)
 
-    #find data from user input in database
-    if not url: # Empty strings are false
-        messagebox.showerror(title="Empty Inputs", message="Please enter Website.")
-    elif url not in database:
-        messagebox.showerror(title="No website info found", message="No website info found.")
+    except FileNotFoundError:
+        messagebox.showerror(title="No Data File Found", message="No Data File Found")
+
     else:
-        email = database[url]["email"]
-        print(email)
-        password = database[url]["password"]
-        print(password)
+        #find data from user input in database
+        if not url: # Empty strings are false
+            messagebox.showerror(title="Empty Inputs", message="Please enter Website.")
+        elif url not in database:
+            messagebox.showerror(title="No website info found", message="No website info found.")
+        else:
+            email = database[url]["email"]
+            print(email)
+            password = database[url]["password"]
+            print(password)
 
-        messagebox.showinfo(title=url, message=f"username is : {email} \npassword is : {password} ")
+            messagebox.showinfo(title=url, message=f"username is : {email} \npassword is : {password} ")
 
 
 
@@ -131,17 +136,17 @@ canvas.grid(row=0, column=1)
 website_label = Label(text="Website:")
 website_label.grid(row=1, column=0)
 
-website_input = Entry(width=35)
-website_input.grid(row=1, column=1, columnspan=2)
+website_input = Entry(width=21)
+website_input.grid(row=1, column=1)
 website_input.focus()
 
-search_button = Button(text="Search", font=("Courier", 9, "normal"), highlightthickness=0, command=find_password)
-search_button.grid(row=1, column=3, columnspan=2)
+search_button = Button(text="Search", width=13, font=("Courier", 9, "normal"), highlightthickness=0, command=find_password)
+search_button.grid(row=1, column=2)
 
 username_label = Label(text="Email/Username :")
 username_label.grid(row=2, column=0)
 
-username_input = Entry(width=35)
+username_input = Entry(width=42)
 username_input.grid(row=2, column=1, columnspan=2)
 username_input.insert(0, "email@example.com.sg")
 
